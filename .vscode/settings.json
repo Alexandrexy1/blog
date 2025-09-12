@@ -4,6 +4,7 @@
   "editor.glyphMargin": false,
   "editor.lineNumbers": "off",
   "files.eol": "\n", // Final de linha sempre será LF
+  "workbench.activityBar.location": "hidden",
   "workbench.editor.labelFormat": "short",
   "editor.tabSize": 2,
   "explorer.compactFolders": false,
