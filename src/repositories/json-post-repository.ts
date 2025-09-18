@@ -12,7 +12,15 @@ const JSON_POSTS_FILE_PATH = resolve(
   "posts.json"
 );
 
+const WAIT_CONTENT_IN_MS = 0;
+
 export class JsonPostRepository implements PostRepository {
+  private async simulateLoadingContent() {
+    if (WAIT_CONTENT_IN_MS <= 0) return;
+
+    await new Promise((resolve) => setTimeout(resolve, WAIT_CONTENT_IN_MS));
+  }
+
   private async readFromDisk(): Promise<PostModel[]> {
     const jsonContent = await readFile(JSON_POSTS_FILE_PATH, "utf-8");
     const parsedJson = JSON.parse(jsonContent);
@@ -21,6 +29,8 @@ export class JsonPostRepository implements PostRepository {
   }
 
   async findAll(): Promise<PostModel[]> {
+    await this.simulateLoadingContent();
+
     const posts = await this.readFromDisk();
     return posts;
   }
