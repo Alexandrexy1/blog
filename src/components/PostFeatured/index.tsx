@@ -1,5 +1,5 @@
-import { PostHeading } from "../PostHeading";
 import { PostImageCover } from "../PostImageCover";
+import { PostSummary } from "../PostSummary";
 
 export function PostFeatured() {
   const slug = "Something";
@@ -18,18 +18,13 @@ export function PostFeatured() {
           priority: true,
         }}
       />
-      <div className="flex flex-col sm:justify-center">
-        <time className="text-slate-600 text-sm/tight" dateTime="2025-09-24">
-          24/09/2025 10:07
-        </time>
-        <PostHeading href={postLink} as="h1">
-          Olá, novo título do FeaturedPost
-        </PostHeading>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio aliquam
-        odio officiis pariatur cupiditate esse voluptatibus vitae alias magnam
-        porro! Maxime numquam odit tenetur illum provident, tempora delectus.
-        Quam, porro.
-      </div>
+      <PostSummary
+        postHeading="h1"
+        postLink={postLink}
+        createdAt={"2025-02-22T04:32:54"}
+        excerpt="Next.js é um framework de desenvolvimento criado para facilitar a construção de aplicações web modernas usando React."
+        title="Como manter o foco no mundo digital"
+      ></PostSummary>
     </section>
   );
 }

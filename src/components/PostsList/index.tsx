@@ -1,6 +1,6 @@
 import { postRepository } from "@/repositories/json-post-repository";
 import { PostImageCover } from "../PostImageCover";
-import { PostBody } from "../PostBody";
+import { PostSummary } from "../PostSummary";
 
 export async function PostsList() {
   const posts = await postRepository.findAll();
@@ -22,24 +22,13 @@ export async function PostsList() {
                 height: 720,
               }}
             />
-            <PostBody
-              postHeadingProps={{
-                href: postLink,
-                as: "h2",
-              }}
-              postModelProps={{
-                id: post.id,
-                title: post.title,
-                slug: post.slug,
-                excerpt: post.excerpt,
-                content: post.content,
-                coverImageUrl: post.coverImageUrl,
-                published: post.published,
-                createdAt: post.createdAt,
-                updatedAt: post.updatedAt,
-                author: post.author,
-              }}
-            ></PostBody>
+            <PostSummary
+              postHeading="h2"
+              postLink={postLink}
+              createdAt={post.createdAt}
+              excerpt={post.excerpt}
+              title={post.title}
+            ></PostSummary>
           </div>
         );
       })}
